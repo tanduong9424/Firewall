@@ -6,8 +6,8 @@
 * Web Server dùng Windows Server 2012 với một card mạng (VMnet2).
 * Máy Client dùng hệ điều hành Windows 10 với card mạng (NAT).
 
-Mô hình như hình:
- ![alt](/img/topology.png)
+![Mô hình mạng](/img/topology.png)
+ ![alt](\img\b1.png)
 ## 2. Công việc sẽ thực hiện
 Công việc sẽ thực hiện bao gồm:
 * Triển khai một Website cơ bản để demo cho chức năng của Web Server.
