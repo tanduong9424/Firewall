@@ -7,7 +7,7 @@
 * Máy Client dùng hệ điều hành Windows 10 với card mạng (NAT).
 
 Mô hình như hình:
- ![alt](topology.png)
+ ![alt](/img/topology.png)
 ## 2. Công việc sẽ thực hiện
 Công việc sẽ thực hiện bao gồm:
 * Triển khai một Website cơ bản để demo cho chức năng của Web Server.
@@ -16,5 +16,24 @@ Công việc sẽ thực hiện bao gồm:
 * Tiến hành tìm hiểu các rule cơ bản trên firewall.
 * Cài đặt hệ thống IDS/IPS.
 # II. Tiến hành
-## 1. Triển khai Web Server
-Sử dụng một WebSite có được thiết kế sẵn để cài đặt Web Server
+## 1. Triển khai Web Server Local
+* Trên Windows Server 2012 truy cập vào Server Manager, chọn Manage -> Add roles and featuers
+* Tiếp tục thực hiện các bước đến khi chọn gói cài đặt, ta chọn gói Web Server (ISS) để cài.
+![alt](/img/b1.png)
+
+* Khi đã cài hoàn tất, ta vào Tool và vào ISS vừa mới cài xong. Bên cột bên trái ta tiến hành tạo một web site mới với tên, đường dẫn đến file index.html, địa chỉ IP và port được điền đầy đủ, có thể tham khảo hình dưới.
+![alt](/img/b2.png)
+
+* Ở đề tài này, website được thiết kế sẵn, bạn có thể tham khảo các website mẫu khác để thực hiện demo.
+![alt](/img/b3.png)
+
+* Sau khi xong các bước cài đặt website ta tiến hành chạy thử bằng cách chọn Browse Website bên cột phải
+![alt](/img/b4.png)
+
+ * Hoặc đơn giản hơn là dùng trình duyệt và truy cập `https://IP_SERVER:PORT` như ở lab đã cấu hình thì truy cập `https://192.168.10.10:8081` ta được kết quả tương tự như hình.
+ ![alt](/img/b5.png)
+
+## 2. Triển khai DMZ
+## 3. Tiến hành Port Forward để NAT lớp mạng NAT vào lớp mạng LAN.
+## 4. Tiến hành tìm hiểu các rule cơ bản trên firewall.
+## 5. Cài đặt hệ thống IDS/IPS.
