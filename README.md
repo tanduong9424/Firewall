@@ -6,7 +6,7 @@
 * Web Server dùng Windows Server 2012 với một card mạng (VMnet2).
 * Máy Client dùng hệ điều hành Windows 10 với card mạng (NAT).
 
-![Mô hình mạng](../img/topology.png)
+ ![Mô hình mạng](img/topology.png)
  ![](..\img\b1.png)
 ## 2. Công việc sẽ thực hiện
 Công việc sẽ thực hiện bao gồm:
