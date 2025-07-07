@@ -5,6 +5,7 @@
 * DMZ dùng dùng hệ điều hành Windows 10 với 1 card mạng (VMnet3).
 * Web Server dùng Windows Server 2012 với một card mạng (VMnet2).
 * Máy Client dùng hệ điều hành Windows 10 với card mạng (NAT).
+
 Mô hình như hình:
  ![alt](topology.png)
 ## 2. Công việc sẽ thực hiện
