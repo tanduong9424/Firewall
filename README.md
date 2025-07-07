@@ -1,3 +1,3 @@
 # Fire_Wall_IPS_IDS
-Loading ... 🥲
-Mô hình FireWall pfSense kết hợp IDS/IPS Snort
+Mô hình FireWall DMZ dùng pfSense kết hợp IDS/IPS Snort
+# ![alt](topology.png)
