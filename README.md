@@ -7,7 +7,7 @@
 * Máy Client dùng hệ điều hành Windows 10 với card mạng (NAT).
 
 ![Mô hình mạng](img/topology.png)
-
+<img src="img/topology.png" />
 ## 2. Công việc sẽ thực hiện
 Công việc sẽ thực hiện bao gồm:
 * Triển khai một Website cơ bản để demo cho chức năng của Web Server.
