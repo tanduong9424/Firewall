@@ -9,6 +9,8 @@
 
 ![Mô hình mạng](img/topology.png)
 
+Tải và cài đặt file img pfSense tại `https://atxfiles.netgate.com/mirror/downloads/`
+
 ## 2. Công việc sẽ thực hiện
 Công việc sẽ thực hiện bao gồm:
 * Triển khai một Website cơ bản để demo cho chức năng của Web Server.
