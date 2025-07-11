@@ -18,9 +18,10 @@ Công việc sẽ thực hiện bao gồm:
 * Tiến hành Port Forward để NAT lớp mạng NAT vào lớp mạng LAN.
 * Tiến hành tìm hiểu các rule cơ bản trên firewall.
 * Cài đặt hệ thống IDS/IPS.
+* 
 # II. Tiến hành
 ## 1. Triển khai Web Server Local
-* Trên Windows Server 2012 truy cập vào Server Manager, chọn Manage -> Add roles and featuers
+* Trên Windows Server 2012 truy cập vào Server Manager, chọn **Manage** -> **Add roles and featuers**
 * Tiếp tục thực hiện các bước đến khi chọn gói cài đặt, ta chọn gói Web Server (ISS) để cài.
 ![Bước 1](img/b1.png)
 
