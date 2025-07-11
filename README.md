@@ -1,4 +1,4 @@
-#Tìm hiểu Firewall, IDS/IPS trên VMWare
+# Tìm hiểu Firewall, IDS/IPS trên VMWare
 #  I. Tổng quan đề tài
 ## 1. Giới thiệu mô hình
 Đề tài thực hiện việc tìm hiểu cách cài đặt, triển khai Firewall bằng pfSense, cách đặt luật, cài đặt DMZ cũng như kết hợp hệ thống cảnh báo phát hiện xâm nhập IDS/IPS trên nền tảng ảo hóa VMWare. Đề tài được xây dựng theo mô hình bao gồm:
