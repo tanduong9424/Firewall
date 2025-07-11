@@ -36,7 +36,7 @@ Công việc sẽ thực hiện bao gồm:
 ## 2. Tiến hành Port Forward để NAT lớp mạng NAT vào lớp mạng LAN.
 ### a. Cấu hình
  Truy cập vào **Firewall** -> **NAT** và tiến hành Add theo các cấu hình dưới:
-
+```
     interface WAN
     Address Family IPv4
     Protocol TCP/UDP
@@ -47,6 +47,7 @@ Công việc sẽ thực hiện bao gồm:
         Type Address or Alias 192.168.10.10
     Redirect target port
         Other 8080
+```
  Ta sẽ được kết quả là một Rule mới trong NAT như hình:
  ![Rule NAT Forward](img/NATForward.png)
 
@@ -60,8 +61,9 @@ IP Private là những IP được cấp trong mạng LAN ví dụ 192.168.x.x/2
 
 
 Bước tiếp theo ta truy cập vào **Firewall** -> **RULES** chọn card **WAN** và tiến hành add rule theo các cấu hình dưới:
-
+```
     Rule 1: Allow inbound Web Traffic to Server
+
     Action Pass
     Interface WAN
     Address Family IPv4
@@ -71,8 +73,12 @@ Bước tiếp theo ta truy cập vào **Firewall** -> **RULES** chọn card **W
     Destination WAN address
     Destination Port Range
         other 8080 to 8080
+```
+```
+    Rule 2: Bất kỳ traffic nào (TCP/UDP) đến cổng WAN 
+    ở port 80, hãy chuyển nó vào 192.168.10.10 ở port 
+    8080.
 
-    Rule 2: Bất kỳ traffic nào (TCP/UDP) đến cổng WAN ở port 80, hãy chuyển nó vào 192.168.10.10 ở port 8080.
     Action Pass
     Interface WAN
     Address Family IPv4
@@ -83,7 +89,7 @@ Bước tiếp theo ta truy cập vào **Firewall** -> **RULES** chọn card **W
         Address or Alias 192.168.10.10
     Destination Port Range
         other 8080 to 8080
-
+```
 Sau khi cấu hình xong ở Rule sẽ như hình:
 ![Rule table](img/Rule1.png)
 ### b. Kiểm tra cấu hình
