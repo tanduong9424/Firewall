@@ -96,7 +96,7 @@ Bước tiếp theo ta truy cập vào **Firewall** -> **RULES** chọn card **W
         other 8080 to 8080
 ```
 Sau khi cấu hình xong ở Rule sẽ như hình:
-![Rule table](img/Rule1.png)
+![Rule table](img/RulePortForward.png)
 #### b.2 Kiểm tra cấu hình
 Sau khi cấu hình NAT port Forward rồi thì Client từ ngoài Internet dùng card mạng NAT có thể truy cập đến Website đặt trong mạng LAN như hình dưới IP `192.168.29.131` là IP card mạng NAT trên Firewall.
 ![test Port Forward](img/webNat.png)
