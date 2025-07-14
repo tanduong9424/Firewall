@@ -173,10 +173,10 @@ Bên tab **BackEnd**, ta tạo mới một Pool, đây sẽ là nơi chứ các 
 Bên tab **FrontEnd**, ta tạo mới một Frontend, đây là nơi mà HAProxy có thể nhận luồng traffic rồi từ đó phân chia request về các node. Theo mô hình chúng ta đã đề cập thì Fontend ở đây là card mạng WAN trên Firewall.
 
 Cấu hình cụ thể:
-![FrontEnd](img/frontend1.png)
+![FrontEnd](img/Frontend1.png)
 
 Chú ý ở mục này ta sẽ chọn Pool đã tạo ở bước vừa tạo bên trên, còn lại các lựa chọn khác có thể để như mặc định.
-![FrontEnd](img/frontend2.png)
+![FrontEnd](img/Frontend2.png)
 
 ### c. Cấu hình Rule để thiết lập DMZ
 Với mô hình đã đề cập, có thể hình dung các luồng traffic như sau:
