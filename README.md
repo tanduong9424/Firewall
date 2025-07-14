@@ -180,6 +180,7 @@ Chú ý ở mục này ta sẽ chọn Pool đã tạo ở bước vừa tạo b�
 
 ### c. Cấu hình Rule để thiết lập DMZ
 Với mô hình đã đề cập, có thể hình dung các luồng traffic như sau:
+![Luồng traffic](img/flowAccessDMZ.png)
 * Windows Server trong mạng LAN có thể dùng để chứa các dịch vụ nội bộ, cũng có thể dùng để quản lý DMZ nên, traffic đi từ LAN đến DMZ được pass.
 ![Rule LAN](img/ruleLan.png)
 
