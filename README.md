@@ -248,15 +248,17 @@ Sau khoảng thời gian chờ cập nhật rule, ta tiếp hành truy cập **S
   ![suricataB11](suricata/suricataB11.png)
 
 Để tiến hành kiểm tra bộ luật ta có nhiều cách để thực hiện, một trong số đó đơn giản nhất là Ping trực tiếp vào pFSense, để làm được điều đó ta cần một Rule tạm thời trên Firewall như hình dưới.
- ![suricataB13](suricata/suricataB13.png).
+ ![suricataB13](suricata/suricataB13.png)
 
  Sau khi đã có Rule Firewall ta ping vào pFSense với IP WAN sẽ được kết quả như hình dưới.
   ![result1](suricata/result1.png)
 
  Với gói tin đầu tiên đã được thông qua bởi Suricata hiện tại đang ở chế độ **Legacy Mode**, nhưng với gói tin thứ 2,3,4  thì đã bị chặn lại bởi nó match với rule ICMP trong Snort.
-   ![suricataB12](suricata/suricataB12.png)
+ 
+  ![suricataB12](suricata/suricataB12.png)
 
 Quay về **Services**->**Suricata**->**Alerts** ta có thể thấy Suricata đã ghi log những host vi phạm cho chung ta ở đây.
+
 ![result2](suricata/result2.png)
 
 Như vậy kết quả Demo đã đúng như dự kiến.
