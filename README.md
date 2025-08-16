@@ -18,7 +18,7 @@ Công việc sẽ thực hiện bao gồm:
 * Tắt tính năng Port Forward, dựng 2 WebServer trên 2 máy ảo CentOS7.
 * Triển khai DMZ kết hợp Load Balancing bằng HAProxy với 2 node chạy CentOS 7 với chức năng chịu tải cho Website.
 * Cài đặt hệ thống IDS/IPS.
-* 
+
 # II. Tiến hành thực hiện
 ## 1. Port Forwarding
 ### a) Triển khai Web Server Local trên Windows Server
@@ -201,3 +201,62 @@ Sau khi cài đặt xong ta sẽ tiến hành truy cập vào WebSite từ bên 
 
 ✍️Kết quả thử nghiệm cho thấy các Rule và Load balancing đã được cấu hình chính xác, đúng như kết quả mong đợi.
 ## 4. Cài đặt hệ thống IDS/IPS.
+Để cài đặt Suricata ta tiến hành truy cập vào **System**->**Package Manager**, di chuyển sang mục **Available Packages** và tìm từ khóa **Suricata** và install.
+![packageSuricata](suricata/packageSuricata.png)
+Sau khi cài đặt xong ta cấu hình Suricata bằng cách truy cập vào **Services**->**Suricata** và tiến hành **Enable** Suricata vào interface WAN.
+ ![suricataB1](suricata/suricataB1.png)
+
+ Ở mục **Alert and Blocking Settings** ta tích vào **Block Offenders** để Suricata có thể tự động chặn các host match với rule.
+
+ Ở mục **IPS Mode** có 2 chế độ là :
+ - **Legacy Mode (IDS)**: chế độ này sẽ tạo bản copy của luồng dữ liệu đi qua và phân tích bản sao đó, nếu nó match với rule thì sẽ báo động tuy nhiên lúc này dữ liệu đã có thể đi qua card mạng này -> Chỉ có thể báo động có sự xâm nhập của gói tin độc hại.
+ - **Inline Mode (IPS)**: chế độ này sẽ tạm ngưng luồng di chuyển của dữ liệu qua card mạng và xem xét, nếu match rule thì sẽ bị giữ lại, ngược lại thì sẽ được pass qua. -> Có thể chặn đứng gói tin độc hại.
+
+Tuy nhiên ở quy mô mô phỏng thì việc chọn chế độ IPS (Inline Mode) có thể gây trở ngại bởi tốc độ cho phép gói tin đi qua là khá lớn nếu phải so với IDS (Legacy Mode), nên ở đây ta nên chọn **Legacy Mode**.
+ ![suricataB2](suricata/suricataB2.png)
+
+Các mục còn lại ta có thể để theo cấu hình mặc định và **Save**, đồng thời đi đến **Global Settings**. Tại đây, ta sẽ chọn source để tải Rule về và cài đặt cho Suricata. Ta chọn **Install Snort Rule** để dùng bộ luật của Snort.
+
+Tiếp đến ta truy cập vào [Trang chủ Snort](https://snort.org). Tại đây ta tạo một tài khoản vào truy cập vào **Oinkcode** vào nhập vào như hình. 
+ ![suricataB4](suricata/suricataB4.png)
+
+Tiếp tục ta vào **Downloads**->**Rule** và chọn 1 trong những bộ luật dưới bằng cách copy và paste vào cấu hình như hình.
+ ![suricataB5](suricata/suricataB5.png)
+
+ Cuối cùng cấu hình sẽ có là:
+ ![suricataB3](suricata/suricataB3.png)
+
+ Ở phần **Rule Update Settings** là thời gian mà bộ luật sẽ được cập nhật để nhận dạng các kiểu tấn công mới, tuy nhiên ta có thể cập nhật thủ công bằng cách chọn mục **NEVER**
+
+  ![suricataB6](suricata/suricataB6.png)
+
+Tiếp đến phần **General Settings** ta có thể thiết lập khoản thời gian mà một host bị chặn khi đã match với rule của Suricata.
+
+ ![suricataB7](suricata/suricataB7.png)
+
+ Đến cuối ta chọn **Save** và đi đến phần **update** để cập nhật rule.
+  ![suricataB8](suricata/suricataB8.png)
+
+Sau khoảng thời gian chờ cập nhật rule, ta tiếp hành truy cập **Services**->**Suricata**->**Interface Settings**->**WAN - Categories** và chọn Select All và Save để có thể Enable hết các rule ta đã cài đặt.
+ ![suricataB9](suricata/suricataB9.png)
+ 
+ Sau khi đợi Enable xong ta quay lại Suricata và Enable Suricata lên để apply cho card mạng WAN.
+  ![suricataB10](suricata/suricataB10.png).
+
+Để chắc chắn ta truy cập vào **Status**->**Services** để kiểm tra Status của Suricata. Như hình dưới là đã hoàn tất cấu hình.
+  ![suricataB11](suricata/suricataB11.png)
+
+Để tiến hành kiểm tra bộ luật ta có nhiều cách để thực hiện, một trong số đó đơn giản nhất là Ping trực tiếp vào pFSense, để làm được điều đó ta cần một Rule tạm thời trên Firewall như hình dưới.
+ ![suricataB13](suricata/suricataB13.png).
+
+ Sau khi đã có Rule Firewall ta ping vào pFSense với IP WAN sẽ được kết quả như hình dưới.
+  ![result1](suricata/result1.png)
+
+ Với gói tin đầu tiên đã được thông qua bởi Suricata hiện tại đang ở chế độ **Legacy Mode**, nhưng với gói tin thứ 2,3,4  thì đã bị chặn lại bởi nó match với rule ICMP trong Snort.
+   ![suricataB12](suricata/suricataB12.png)
+
+Quay về **Services**->**Suricata**->**Alerts** ta có thể thấy Suricata đã ghi log những host vi phạm cho chung ta ở đây.
+![result2](suricata/result2.png)
+
+Như vậy kết quả Demo đã đúng như dự kiến.
+Cảm ơn bạn đọc đã quan tâm.
