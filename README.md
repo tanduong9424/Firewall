@@ -235,6 +235,7 @@ Tiếp đến phần **General Settings** ta có thể thiết lập khoản th�
  ![suricataB7](suricata/suricataB7.png)
 
  Đến cuối ta chọn **Save** và đi đến phần **update** để cập nhật rule.
+ 
   ![suricataB8](suricata/suricataB8.png)
 
 Sau khoảng thời gian chờ cập nhật rule, ta tiếp hành truy cập **Services**->**Suricata**->**Interface Settings**->**WAN - Categories** và chọn Select All và Save để có thể Enable hết các rule ta đã cài đặt.
